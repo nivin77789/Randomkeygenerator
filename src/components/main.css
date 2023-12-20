@@ -33,10 +33,13 @@
   height: 250px;
 }
 .right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.right-sub {
   display: block;
   align-items: center;
-  margin-left: 100px;
-  width: 600px;
 }
 .check {
   display: flex;
@@ -203,5 +206,28 @@
 @media only screen and (max-width: 600px) {
   .left {
     display: none;
+  }
+  .inp {
+    width: 320px;
+  }
+  .bot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .right-sub {
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+  }
+  .check {
+    display: block;
+  }
+  .down {
+    bottom: 0%;
+  }
+  .keylen {
+    display: block;
   }
 }

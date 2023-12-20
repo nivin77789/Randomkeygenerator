@@ -26,74 +26,76 @@ function Main() {
           <img src={im} alt="Logo" />
         </div>
         <div className="right">
-          <div className="inp">
-            <p>39tTGcpEZzU4cjc</p>
-            <div className="btn2">Copy</div>
-          </div>
-          <div className="keylen">
-            <p>KeyLength:</p>
-            <div className="range">
-              <input
-                type="range"
-                value={rangeValue}
-                min="10"
-                max="50"
-                onChange={handleRangeChange}
-              />
-              <p id="rangeValue">{rangeValue}</p>
+          <div className="right-sub">
+            <div className="inp">
+              <p>39tTGcpEZzU4cjc</p>
+              <div className="btn2">Copy</div>
             </div>
-          </div>
-          <div className="check">
-            <p>Charecters Used:</p>
-            <div class="checkbox-wrapper-46">
-              <input class="inp-cbx" id="cbx-46" type="checkbox" />
-              <label class="cbx" for="cbx-46">
-                <span>
-                  <svg width="12px" height="10px" viewbox="0 0 12 10">
-                    <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-                  </svg>
-                </span>
-                <span>ABC</span>
-              </label>
+            <div className="keylen">
+              <p>KeyLength:</p>
+              <div className="range">
+                <input
+                  type="range"
+                  value={rangeValue}
+                  min="10"
+                  max="50"
+                  onChange={handleRangeChange}
+                />
+                <p id="rangeValue">{rangeValue}</p>
+              </div>
             </div>
-            <div class="checkbox-wrapper-46">
-              <input class="inp-cbx" id="cbx-46" type="checkbox" />
-              <label class="cbx" for="cbx-46">
-                <span>
-                  <svg width="12px" height="10px" viewbox="0 0 12 10">
-                    <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-                  </svg>
-                </span>
-                <span>abc</span>
-              </label>
+            <div className="check">
+              <p>Charecters Used:</p>
+              <div class="checkbox-wrapper-46">
+                <input class="inp-cbx" id="cbx-46" type="checkbox" />
+                <label class="cbx" for="cbx-46">
+                  <span>
+                    <svg width="12px" height="10px" viewbox="0 0 12 10">
+                      <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                    </svg>
+                  </span>
+                  <span>ABC</span>
+                </label>
+              </div>
+              <div class="checkbox-wrapper-46">
+                <input class="inp-cbx" id="cbx-46" type="checkbox" />
+                <label class="cbx" for="cbx-46">
+                  <span>
+                    <svg width="12px" height="10px" viewbox="0 0 12 10">
+                      <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                    </svg>
+                  </span>
+                  <span>abc</span>
+                </label>
+              </div>
+              <div class="checkbox-wrapper-46">
+                <input class="inp-cbx" id="cbx-46" type="checkbox" />
+                <label class="cbx" for="cbx-46">
+                  <span>
+                    <svg width="12px" height="10px" viewbox="0 0 12 10">
+                      <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                    </svg>
+                  </span>
+                  <span>123</span>
+                </label>
+              </div>
+              <div class="checkbox-wrapper-46">
+                <input class="inp-cbx" id="cbx-46" type="checkbox" />
+                <label class="cbx" for="cbx-46">
+                  <span>
+                    <svg width="12px" height="10px" viewbox="0 0 12 10">
+                      <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                    </svg>
+                  </span>
+                  <span>#$&</span>
+                </label>
+              </div>
             </div>
-            <div class="checkbox-wrapper-46">
-              <input class="inp-cbx" id="cbx-46" type="checkbox" />
-              <label class="cbx" for="cbx-46">
-                <span>
-                  <svg width="12px" height="10px" viewbox="0 0 12 10">
-                    <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-                  </svg>
-                </span>
-                <span>123</span>
-              </label>
+            <div className="button">
+              <div className="btn">Pick Image to generate key</div>
+              <h4>OR</h4>
+              <div className="btn">Live Capture</div>
             </div>
-            <div class="checkbox-wrapper-46">
-              <input class="inp-cbx" id="cbx-46" type="checkbox" />
-              <label class="cbx" for="cbx-46">
-                <span>
-                  <svg width="12px" height="10px" viewbox="0 0 12 10">
-                    <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-                  </svg>
-                </span>
-                <span>#$&</span>
-              </label>
-            </div>
-          </div>
-          <div className="button">
-            <div className="btn">Pick Image to generate key</div>
-            <h4>OR</h4>
-            <div className="btn">Live Capture</div>
           </div>
         </div>
       </div>
