@@ -86,6 +86,11 @@ function Main() {
               </label>
             </div>
           </div>
+          <div className="button">
+            <div className="btn">PICK IMAGE TO GENERATE KEY</div>
+            <h4>OR</h4>
+            <div className="btn">Live Capture</div>
+          </div>
         </div>
       </div>
       <div className="down"></div>

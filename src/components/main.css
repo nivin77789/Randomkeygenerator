@@ -15,7 +15,7 @@
   justify-content: center;
   color: #3f6bff;
   height: 500px;
-  width: 500px;
+  width: 700px;
   border-style: dashed;
   border-color: #3f6bff;
   border-radius: 40px;
@@ -32,6 +32,8 @@
 .right {
   display: block;
   align-items: center;
+  margin-left: 100px;
+  width: 600px;
 }
 .check {
   display: flex;
@@ -136,4 +138,32 @@
   padding-left: 40px;
   margin-left: 45px;
   margin-right: 40px;
+}
+.button {
+  display: flex;
+  align-items: center;
+
+  margin-top: 40px;
+}
+.button h4 {
+  margin-right: 20px;
+  margin-left: 20px;
+}
+.btn {
+  -webkit-border-radius: 10;
+  -moz-border-radius: 10;
+  border-radius: 10px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 13px;
+  background: #3f6bff;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  width: auto;
+}
+
+.btn:hover {
+  background: #4168e8;
+  text-decoration: none;
+  cursor: pointer;
 }
