@@ -26,6 +26,10 @@ function Main() {
           <img src={im} alt="Logo" />
         </div>
         <div className="right">
+          <div className="inp">
+            <p>39tTGcpEZzU4cjc</p>
+            <div className="btn2">Copy</div>
+          </div>
           <div className="keylen">
             <p>KeyLength:</p>
             <div className="range">
@@ -87,7 +91,7 @@ function Main() {
             </div>
           </div>
           <div className="button">
-            <div className="btn">PICK IMAGE TO GENERATE KEY</div>
+            <div className="btn">Pick Image to generate key</div>
             <h4>OR</h4>
             <div className="btn">Live Capture</div>
           </div>
