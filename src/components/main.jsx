@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import "./main.css";
 import im from "../images/im.png";
+import Check from "./check";
+import Webcam from "react-webcam";
+import { useCallback, useRef } from "react";
+import $ from "jquery";
 
 function Main() {
   const [rangeValue, setRangeValue] = useState(25);
@@ -10,7 +14,30 @@ function Main() {
     const newValue = parseInt(event.target.value, 10);
     setRangeValue(newValue);
   };
+  //image upload
 
+  const [file, setFile] = useState();
+  function handleChange(e) {
+    console.log(e.target.files);
+    setFile(URL.createObjectURL(e.target.files[0]));
+    $(".left-img").addClass("left-img-vis");
+    $(".left-sub").addClass("left-sub-hid");
+  }
+
+  //webcam
+
+  const webcamRef = useRef(null);
+  const [imgSrc, setImgSrc] = useState(null);
+
+  // create a capture function
+  const capture = useCallback(() => {
+    const imageSrc = webcamRef.current.getScreenshot();
+    setImgSrc(imageSrc);
+  }, [webcamRef]);
+
+  const retake = () => {
+    setImgSrc(null);
+  };
   return (
     <div>
       <div className="top">
@@ -19,11 +46,16 @@ function Main() {
       </div>
       <div className="bot">
         <div className="left">
-          <h1>
-            DRAG IMAGE HERE TO <br></br>GENERATE KEY
-          </h1>
+          <div className="left-img">
+            <img alt="img" src={file} />
+          </div>
+          <div className="left-sub">
+            <h1>
+              DRAG IMAGE HERE TO <br></br>GENERATE KEY
+            </h1>
 
-          <img src={im} alt="Logo" />
+            <img src={im} alt="Logo" />
+          </div>
         </div>
         <div className="right">
           <div className="right-sub">
@@ -44,57 +76,31 @@ function Main() {
                 <p id="rangeValue">{rangeValue}</p>
               </div>
             </div>
-            <div className="check">
-              <p>Charecters Used:</p>
-              <div class="checkbox-wrapper-46">
-                <input class="inp-cbx" id="cbx-46" type="checkbox" />
-                <label class="cbx" for="cbx-46">
-                  <span>
-                    <svg width="12px" height="10px" viewbox="0 0 12 10">
-                      <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-                    </svg>
-                  </span>
-                  <span>ABC</span>
-                </label>
-              </div>
-              <div class="checkbox-wrapper-46">
-                <input class="inp-cbx" id="cbx-46" type="checkbox" />
-                <label class="cbx" for="cbx-46">
-                  <span>
-                    <svg width="12px" height="10px" viewbox="0 0 12 10">
-                      <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-                    </svg>
-                  </span>
-                  <span>abc</span>
-                </label>
-              </div>
-              <div class="checkbox-wrapper-46">
-                <input class="inp-cbx" id="cbx-46" type="checkbox" />
-                <label class="cbx" for="cbx-46">
-                  <span>
-                    <svg width="12px" height="10px" viewbox="0 0 12 10">
-                      <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-                    </svg>
-                  </span>
-                  <span>123</span>
-                </label>
-              </div>
-              <div class="checkbox-wrapper-46">
-                <input class="inp-cbx" id="cbx-46" type="checkbox" />
-                <label class="cbx" for="cbx-46">
-                  <span>
-                    <svg width="12px" height="10px" viewbox="0 0 12 10">
-                      <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-                    </svg>
-                  </span>
-                  <span>#$&</span>
-                </label>
-              </div>
-            </div>
+            <Check />
             <div className="button">
-              <div className="btn">Pick Image to generate key</div>
+              <input
+                className="btn"
+                type="file"
+                placeholder="Pick Image to generate key"
+                onChange={handleChange}
+              />
+
               <h4>OR</h4>
               <div className="btn">Live Capture</div>
+              <div className="container">
+                {imgSrc ? (
+                  <img src={imgSrc} alt="webcam" />
+                ) : (
+                  <Webcam height={600} width={600} ref={webcamRef} />
+                )}
+                <div className="btn-container">
+                  {imgSrc ? (
+                    <button onClick={retake}>Retake photo</button>
+                  ) : (
+                    <button onClick={capture}>Capture photo</button>
+                  )}
+                </div>
+              </div>
             </div>
           </div>
         </div>
