@@ -8,28 +8,30 @@ import $ from "jquery";
 
 function Main() {
   const [rangeValue, setRangeValue] = useState(25);
+  const [webcamActive, setWebcamActive] = useState(false);
 
   // Function to handle range input changes
   const handleRangeChange = (event) => {
     const newValue = parseInt(event.target.value, 10);
     setRangeValue(newValue);
   };
-  //image upload
 
+  // Image upload
   const [file, setFile] = useState();
+
   function handleChange(e) {
     console.log(e.target.files);
     setFile(URL.createObjectURL(e.target.files[0]));
     $(".left-img").addClass("left-img-vis");
     $(".left-sub").addClass("left-sub-hid");
+    setWebcamActive(false); // Close the webcam when an image is uploaded
   }
 
-  //webcam
-
+  // Webcam
   const webcamRef = useRef(null);
   const [imgSrc, setImgSrc] = useState(null);
 
-  // create a capture function
+  // Create a capture function
   const capture = useCallback(() => {
     const imageSrc = webcamRef.current.getScreenshot();
     setImgSrc(imageSrc);
@@ -38,14 +40,46 @@ function Main() {
   const retake = () => {
     setImgSrc(null);
   };
+
+  // Toggle webcam visibility
+  const toggleWebcam = () => {
+    $(".left-sub").addClass("left-sub-hid");
+    $(".cam").addClass("cam-vis");
+    setWebcamActive(!webcamActive);
+  };
+
   return (
     <div>
       <div className="top">
         <h1>Random Key Generator</h1>
-        <h4>Create strong and secure encryption key</h4>
+        <h4>Create a strong and secure encryption key</h4>
       </div>
       <div className="bot">
         <div className="left">
+          <div className="cam">
+            {webcamActive ? (
+              <div>
+                {imgSrc ? (
+                  <img src={imgSrc} alt="webcam" />
+                ) : (
+                  <Webcam height={600} width={600} ref={webcamRef} />
+                )}
+              </div>
+            ) : (
+              <img src={imgSrc} alt="webcam" />
+            )}
+            <div className="btn-container">
+              {imgSrc ? (
+                <button className="btn" onClick={retake}>
+                  Retake photo
+                </button>
+              ) : (
+                <button className="btn" onClick={capture}>
+                  Capture photo
+                </button>
+              )}
+            </div>
+          </div>
           <div className="left-img">
             <img alt="img" src={file} />
           </div>
@@ -53,7 +87,6 @@ function Main() {
             <h1>
               DRAG IMAGE HERE TO <br></br>GENERATE KEY
             </h1>
-
             <img src={im} alt="Logo" />
           </div>
         </div>
@@ -84,22 +117,9 @@ function Main() {
                 placeholder="Pick Image to generate key"
                 onChange={handleChange}
               />
-
               <h4>OR</h4>
-              <div className="btn">Live Capture</div>
-              <div className="container">
-                {imgSrc ? (
-                  <img src={imgSrc} alt="webcam" />
-                ) : (
-                  <Webcam height={600} width={600} ref={webcamRef} />
-                )}
-                <div className="btn-container">
-                  {imgSrc ? (
-                    <button onClick={retake}>Retake photo</button>
-                  ) : (
-                    <button onClick={capture}>Capture photo</button>
-                  )}
-                </div>
+              <div className="btn" onClick={toggleWebcam}>
+                Live Capture
               </div>
             </div>
           </div>

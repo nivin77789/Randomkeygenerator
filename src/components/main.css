@@ -136,6 +136,20 @@
   width: 470px;
   margin-bottom: 60px;
 }
+.cam {
+  display: none;
+}
+.cam-vis {
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+  margin-top: -60px;
+}
+.cam-vis img {
+  padding-top: 110px;
+  height: 400px;
+  width: auto;
+}
 @media only screen and (max-width: 600px) {
   .left {
     display: none;
