@@ -5,6 +5,9 @@ import Check from "./check";
 import Webcam from "react-webcam";
 import { useCallback, useRef } from "react";
 import $ from "jquery";
+import { FileUploader } from "react-drag-drop-files";
+
+const fileTypes = ["JPG", "PNG", "GIF"];
 
 function Main() {
   const [rangeValue, setRangeValue] = useState(25);
@@ -16,7 +19,7 @@ function Main() {
     setRangeValue(newValue);
   };
 
-  // Image upload
+  //Image upload
   const [file, setFile] = useState();
 
   function handleChange(e) {
@@ -48,6 +51,16 @@ function Main() {
     setWebcamActive(!webcamActive);
   };
 
+  //drop image
+
+  //   const [file, setFile] = useState(null);
+  //   const handleChange = (file) => {
+  //     setFile(file);
+  //     $(".left-img").addClass("left-img-vis");
+  //     $(".left-sub").addClass("left-sub-hid");
+  //     setWebcamActive(false);
+  //   };
+
   return (
     <div>
       <div className="top">
@@ -56,6 +69,12 @@ function Main() {
       </div>
       <div className="bot">
         <div className="left">
+          <FileUploader
+            handleChange={handleChange}
+            name="file"
+            types={fileTypes}
+          />
+
           <div className="cam">
             {webcamActive ? (
               <div>
