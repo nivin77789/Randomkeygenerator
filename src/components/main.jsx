@@ -69,12 +69,6 @@ function Main() {
       </div>
       <div className="bot">
         <div className="left">
-          <FileUploader
-            handleChange={handleChange}
-            name="file"
-            types={fileTypes}
-          />
-
           <div className="cam">
             {webcamActive ? (
               <div>
@@ -103,6 +97,12 @@ function Main() {
             <img alt="img" src={file} />
           </div>
           <div className="left-sub">
+            <FileUploader
+              className="drag"
+              handleChange={handleChange}
+              name="file"
+              types={fileTypes}
+            />
             <h1>
               DRAG IMAGE HERE TO <br></br>GENERATE KEY
             </h1>

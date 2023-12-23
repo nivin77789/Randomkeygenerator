@@ -13,6 +13,8 @@
   display: block;
   text-align: center;
   justify-content: center;
+}
+.left-sub {
   color: #3f6bff;
   height: 480px;
   width: 600px;
@@ -20,7 +22,7 @@
   border-color: #3f6bff;
   border-radius: 40px;
   border-width: 3px;
-  margin-left: 130px;
+  margin-left: 100px;
 }
 .left h1 {
   padding-top: 70px;
@@ -41,6 +43,7 @@
   display: block;
   align-items: center;
 }
+
 .check {
   display: flex;
   align-items: center;
