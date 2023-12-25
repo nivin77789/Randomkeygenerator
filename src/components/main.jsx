@@ -6,7 +6,7 @@ import Webcam from "react-webcam";
 import { useCallback, useRef } from "react";
 import $ from "jquery";
 import { FileUploader } from "react-drag-drop-files";
-import "material-icons/iconfont/material-icons.css";
+import CameraIcon from "@mui/icons-material/Camera";
 
 const fileTypes = ["JPG", "PNG", "GIF"];
 
@@ -89,7 +89,7 @@ function Main() {
                 </button>
               ) : (
                 <button className="btn" onClick={capture}>
-                  <span class="material-symbols-outlined">photo_camera</span>
+                  <CameraIcon />
                 </button>
               )}
             </div>
