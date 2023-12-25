@@ -6,6 +6,7 @@ import Webcam from "react-webcam";
 import { useCallback, useRef } from "react";
 import $ from "jquery";
 import { FileUploader } from "react-drag-drop-files";
+import "material-icons/iconfont/material-icons.css";
 
 const fileTypes = ["JPG", "PNG", "GIF"];
 
@@ -88,7 +89,7 @@ function Main() {
                 </button>
               ) : (
                 <button className="btn" onClick={capture}>
-                  Capture photo
+                  <span class="material-symbols-outlined">photo_camera</span>
                 </button>
               )}
             </div>
@@ -97,15 +98,17 @@ function Main() {
             <img alt="img" src={file} />
           </div>
           <div className="left-sub">
-            <FileUploader
-              className="drag"
-              handleChange={handleChange}
-              name="file"
-              types={fileTypes}
-            />
             <h1>
               DRAG IMAGE HERE TO <br></br>GENERATE KEY
             </h1>
+            <div className="drag">
+              <FileUploader
+                handleChange={handleChange}
+                name="file"
+                types={fileTypes}
+              />
+            </div>
+
             <img src={im} alt="Logo" />
           </div>
         </div>
