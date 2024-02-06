@@ -119,6 +119,7 @@ function Main() {
       .join("");
     return hashHex;
   };
+  //copy text
 
   return (
     <div>
@@ -164,9 +165,9 @@ function Main() {
             <div className="drag">
               <FileUploader
                 handleChange={handleChange}
-                onChange={handleFileChange}
                 name="file"
                 types={fileTypes}
+                onChange={handleFileChange}
               />
             </div>
 
@@ -176,8 +177,17 @@ function Main() {
         <div className="right">
           <div className="right-sub">
             <div className="inp">
-              <p>{hashResult}</p>
-              <div className="btn2">Copy</div>
+              <p>{hashResult.substring(0, rangeValue)}</p>
+              <div
+                className="btn2"
+                onClick={() => {
+                  navigator.clipboard.writeText(
+                    hashResult.substring(0, rangeValue)
+                  );
+                }}
+              >
+                Copy
+              </div>
             </div>
             <div className="keylen">
               <p>KeyLength:</p>
@@ -186,7 +196,7 @@ function Main() {
                   type="range"
                   value={rangeValue}
                   min="10"
-                  max="50"
+                  max="64"
                   onChange={handleRangeChange}
                 />
                 <p id="rangeValue">{rangeValue}</p>
@@ -194,11 +204,6 @@ function Main() {
             </div>
             <div>
               <input type="file" onChange={handleFileChange} />
-              {hashResult && (
-                <div>
-                  <strong>SHA-256 Hash:</strong> {hashResult}
-                </div>
-              )}
             </div>
             <Check />
             <div className="button">
