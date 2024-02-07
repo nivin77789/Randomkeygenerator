@@ -8,12 +8,10 @@ import $ from "jquery";
 import { FileUploader } from "react-drag-drop-files";
 import CameraIcon from "@mui/icons-material/Camera";
 
-const fileTypes = ["JPG", "PNG", "GIF"];
-
 function Main() {
   const [rangeValue, setRangeValue] = useState(25);
   const [webcamActive, setWebcamActive] = useState(false);
-
+  const [imgSrc, setImgSrc] = useState(null);
   // Function to handle range input changes
   const handleRangeChange = (event) => {
     const newValue = parseInt(event.target.value, 10);
@@ -25,6 +23,7 @@ function Main() {
 
   function handleChange(e) {
     console.log(e.target.files);
+    handleFileChange(e.target.files[0]);
     setFile(URL.createObjectURL(e.target.files[0]));
     $(".left-img").addClass("left-img-vis");
     $(".left-sub").addClass("left-sub-hid");
@@ -33,7 +32,6 @@ function Main() {
 
   // Webcam
   const webcamRef = useRef(null);
-  const [imgSrc, setImgSrc] = useState(null);
 
   // Create a capture function
   const capture = useCallback(() => {
@@ -166,8 +164,7 @@ function Main() {
               <FileUploader
                 handleChange={handleChange}
                 name="file"
-                types={fileTypes}
-                onChange={handleFileChange}
+                type="file"
               />
             </div>
 
@@ -202,9 +199,7 @@ function Main() {
                 <p id="rangeValue">{rangeValue}</p>
               </div>
             </div>
-            <div>
-              <input type="file" onChange={handleFileChange} />
-            </div>
+
             <Check />
             <div className="button">
               <input
